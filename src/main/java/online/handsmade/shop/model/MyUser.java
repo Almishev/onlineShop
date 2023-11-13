@@ -16,17 +16,17 @@ public class MyUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @NotEmpty(message = "Username nie może być pusty")
-    @Size(min = 2, message = "Zbyt krótka nazwa konta")
-    @Size(max = 30, message = "Zbyt długa nazwa konta")
+    @NotEmpty(message = "Username must not be empty")
+    @Size(min = 2, message = "min two symbols")
+    @Size(max = 30, message = "Max 30 symbols")
     private String username;
-    @NotEmpty(message = "Haslo nie moze byc puste")
+    @NotEmpty(message = "Password must not be empty")
     @NotBlank
     private String password;
     private String passwordMatcher;
-    @ValidEmail(message = "Prosze podać prawidłowy email")
+    @ValidEmail(message = "Enter valid email")
     @NotBlank
-    @NotEmpty(message = "Pole email nie moze byc puste")
+    @NotEmpty(message = "Email must not be empty")
     private String email;
     private String role;
 

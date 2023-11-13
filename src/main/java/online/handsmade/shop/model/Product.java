@@ -10,24 +10,24 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long id;
-    @NotEmpty(message = "Nazwa producenta nie może być pusta")
+    @NotEmpty()
     @NotBlank
-    @Size(min = 2, message = "Zbyt krótka nazwa producenta")
+    @Size(min = 2)
     private String producer;
-    @NotEmpty(message = "Nazwa produktu nie może być pusta")
+    @NotEmpty()
     @NotBlank
-    @Size(min = 2,message = "Zbyt krótka nazwa produktu")
+    @Size(min = 2,message = "It should be min 2 symbols")
     private String name;
-    @DecimalMax(value = "1000000.0", message = "Zbyt duża cena")
-    @DecimalMin(value="0.0", message = "Cena nie może być niższa niż 0zł")
-    @NotNull(message = "Proszę podać cene")
+    @DecimalMax(value = "1000000.0", message = "It's over max price")
+    @DecimalMin(value="0.0", message = "It's under min price")
+    @NotNull(message = "Enter price")
     private Double price;
-    @NotEmpty(message = "Link do zdjęcia nie może być pusty")
+    @NotEmpty(message = "Link must not be empty")
     @NotBlank
-    @Size(min = 2,message = "Zbyt krótki link do zdjęcia")
+    @Size(min = 2,message = "min symbols-2")
     private String imageSource;
-    @NotNull(message = "Proszę podać ilość dostępnych produktów")
-    @DecimalMin(value="0.0", message = "Ilosc nie może być niższa niż 0")
+    @NotNull(message = "Enter quantity")
+    @DecimalMin(value="0.0", message = "Should be bigger than zero")
     private Integer stock;
     private String category;
 
@@ -39,7 +39,7 @@ public class Product {
         this.imageSource = imageSource;
     }
 
-    public Product(@NotEmpty(message = "Nazwa producenta nie może być pusta") @NotBlank @Size(min = 2, message = "Zbyt krótka nazwa producenta") String producer, @NotEmpty(message = "Nazwa produktu nie może być pusta") @NotBlank @Size(min = 2, message = "Zbyt krótka nazwa produktu") String name, @DecimalMax(value = "1000000.0", message = "Zbyt duża cena") @DecimalMin(value = "0.0", message = "Cena nie może być niższa niż 0zł") @NotNull(message = "Proszę podać cene") Double price, @NotEmpty(message = "Link do zdjęcia nie może być pusty") @NotBlank @Size(min = 2, message = "Zbyt krótki link do zdjęcia") String imageSource, @NotNull(message = "Proszę podać ilość dostępnych produktów") @DecimalMin(value = "0.0", message = "Ilosc nie może być niższa niż 0") Integer stock, String category) {
+    public Product(@NotEmpty(message = "Must no be empty") @NotBlank @Size(min = 2, message = "Min two symbols") String producer, @NotEmpty(message = "Nazwa produktu nie może być pusta") @NotBlank @Size(min = 2, message = "Zbyt krótka nazwa produktu") String name, @DecimalMax(value = "1000000.0", message = "Zbyt duża cena") @DecimalMin(value = "0.0", message = "Cena nie może być niższa niż 0zł") @NotNull(message = "Proszę podać cene") Double price, @NotEmpty(message = "Link do zdjęcia nie może być pusty") @NotBlank @Size(min = 2, message = "Zbyt krótki link do zdjęcia") String imageSource, @NotNull(message = "Proszę podać ilość dostępnych produktów") @DecimalMin(value = "0.0", message = "Ilosc nie może być niższa niż 0") Integer stock, String category) {
         this.producer = producer;
         this.name = name;
         this.price = price;

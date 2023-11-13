@@ -11,34 +11,34 @@ public class AddressAndPersonalData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @NotEmpty(message = "Podaj imię")
-    @Size(min = 2, message = "Zbyt krótkie imie")
-    @Size(max = 30, message = "Zbyt długie imie")
+    @NotEmpty(message = "Enter name")
+    @Size(min = 2, message = "Min two symbols")
+    @Size(max = 30, message = "Max 30 symbols")
     private String firstName;
     @NotBlank
-    @NotEmpty(message = "Podaj nazwisko")
-    @Size(min = 2, message = "Nazwisko zbyt krótkie")
-    @Size(max = 30, message = "Nazwisko zbyt długie")
+    @NotEmpty(message = "Enter lastname")
+    @Size(min = 2, message = "Min two symbols")
+    @Size(max = 30, message = "Max 30 symbols")
     private String lastName;
     @NotBlank
-    @NotEmpty(message = "Podaj miasto")
-    @Size(min = 2, message = "Zbyt krótka nazwa miasta")
-    @Size(max = 30, message = "Zbyt długa nazwa miasta")
+    @NotEmpty(message = "Enter city")
+    @Size(min = 2, message = "Min two symbols")
+    @Size(max = 30, message = "Max 30 symbols")
     private String city;
     @NotBlank
-    @NotEmpty(message = "Podaj ulice")
-    @Size(min = 2, message = "Nazwa ulicy zbyt krótka")
-    @Size(max = 30, message = "Nazwa ulicy zbyt długa")
+    @NotEmpty(message = "Enter street")
+    @Size(min = 2, message = "Min two symbols")
+    @Size(max = 30, message = "Max 30 symbols")
     private String street;
     @NotBlank
-    @NotEmpty(message = "Podaj kod pocztowy")
-    @Size(min = 2, message = "Kod pocztowy zbyt krótki")
-    @Size(max = 30, message = "Kod pocztowy zbyt długi")
+    @NotEmpty(message = "Enter post code")
+    @Size(min = 2, message = "Min two symbols")
+    @Size(max = 30, message = "Max 30 symbols")
     private String zipCode;
     @NotBlank
-    @NotEmpty(message = "Podaj numer telefonu")
-    @Size(min = 2, message = "Zbyt krótki numer telefonu")
-    @Size(max = 30, message = "Zbyt długi numer telefonu")
+    @NotEmpty(message = "Enter phone number")
+    @Size(min = 10, message = "Phone must be 10 digits")
+    @Size(max = 10, message = "Phone must be 10 digits")
     private String phoneNumber;
 
     public AddressAndPersonalData(String firstName, String lastName, String city, String street, String zipCode, String phoneNumber) {
