@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary mb-4" xmlns:th="http://www.w3.org/1999/xhtml"
-     style="border-bottom: 1px solid black; position: sticky; top: 5px;" xmlns:sec="http://www.w3.org/1999/xhtml">
+<nav class="navbar navbar-expand-lg navbar-light bg-info mb-4"  xmlns:th="http://www.w3.org/1999/xhtml"
+
+     style="border-bottom: 3px solid black; top: 3px;" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container-fluid">
         <a class="navbar-brand nav-link" th:href="@{/}" style="margin-left: 40px;">Store <span class="fw-bold"> HOME </span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +14,7 @@
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item" th:class="${activePage == 'cart'} ? 'nav-item active border-bottom border-dark' : 'nav-item'"  style="margin-left: 10px">
 
-                    <a class="nav-link" href="/cart">Basket</a>
+                    <a id="basket" class="nav-link" href="/cart">Basket</a>
                 </li>
 
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item"  th:class="${activePage == 'adminPanel'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
@@ -41,9 +42,16 @@
                     <a class="nav-link"  th:href="@{/gallery}">Gallery</a>
                 </li>
 
+                <li class="nav-item" th:class="${activePage == 'about'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
+                    <a class="nav-link" th:href="@{/about}">About us</a>
+                </li>
+
+
                 <li sec:authorize="isAuthenticated()" class="nav-item" style="margin-left: 100px">
                     <a class="nav-link">Welcome  <span sec:authentication="name"></span> </a>
                 </li>
+
+
 
 
 
@@ -51,3 +59,4 @@
         </div>
     </div>
 </nav>
+

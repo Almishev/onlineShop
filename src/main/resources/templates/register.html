@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+  <style>
+  body {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(76, 77, 73)), to(rgb(41, 46, 47))) fixed;
+  }
+  .container{
+  color: white;
+  }
+  </style>
 <body>
 <nav th:replace="fragments/nav">
 
@@ -49,8 +57,8 @@
                 <div style="color: red" th:if="${#fields.hasErrors('email')}"
                      th:errors="*{email}"></div>
             </div>
-            <button type="submit" class="btn btn-primary">Registration</button>
-            <button type="button" onclick="location.href='/login.html'" style="float: right" class="btn btn-primary pull-right">Log in</button>
+            <button type="submit" class="btn btn-outline-success">Registration</button>
+            <button type="button" onclick="location.href='/login.html'"  class="btn btn-outline-info">Log in</button>
         </form>
     </div>
 

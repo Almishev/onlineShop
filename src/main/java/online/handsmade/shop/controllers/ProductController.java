@@ -66,6 +66,13 @@ public class ProductController {
         return "new_product";
     }
 
+    @GetMapping("/about")
+    public String visitAboutUs(Model model){
+        model.addAttribute("activePage", "about");
+        return "about-us";
+    }
+
+
     @RequestMapping(value = "/product/save", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult,Model model) {
         if (bindingResult.hasErrors()) {

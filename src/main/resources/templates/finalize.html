@@ -11,52 +11,63 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<style>
+
+      body {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(76, 77, 73)), to(rgb(41, 46, 47))) fixed;
+    }
+    .container{
+            color: white;
+     }
+
+</style>
 <body>
 
 <nav th:replace="fragments/nav">
 
 </nav>
     <div class="container">
-        <h1>Finalizing the order</h1>
+        <h2 class="text-center">Sending the order</h2>
         <form action="#" th:action="@{/cart/finalize/save}" th:object="${addressandpersonaldata}" method="post">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input th:field="*{firstName}" type="text" class="form-control" name="username" autofocus="autofocus" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name">
+
+            <div class="form-group row">
+                <label for="exampleInputEmail1" class="col">Name:</label>
+                <input th:field="*{firstName}" type="text" class="form-control col" name="username" autofocus="autofocus" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name">
                 <div style="color: red" th:if="${#fields.hasErrors('firstName')}"
                      th:errors="*{firstName}"></div></td>
             </div>
-            <div class="form-group">
-                <label for="lastName">Last name</label>
-                <input type="text" class="form-control" name="lastName" id="lastName" th:field="*{lastName}" placeholder="Last name">
+            <div class="form-group row">
+                <label class="col" for="lastName">Last name:</label>
+                <input type="text" class="form-control col" name="lastName" id="lastName" th:field="*{lastName}" placeholder="Last name">
                 <div style="color: red" th:if="${#fields.hasErrors('lastName')}"
                      th:errors="*{lastName}"></div>
             </div>
-            <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" class="form-control" name="lastName" id="city" th:field="*{city}" placeholder="City">
+            <div class="form-group row">
+                <label for="city" class="col">City:</label>
+                <input type="text" class="form-control col" name="lastName" id="city" th:field="*{city}" placeholder="City">
                 <div style="color: red" th:if="${#fields.hasErrors('city')}"
                      th:errors="*{city}"></div>
             </div>
-            <div class="form-group">
-                <label for="street">Street and house/apartment number</label>
-                <input type="text" class="form-control" name="street" id="street" th:field="*{street}" placeholder="Street and house/apartment number">
+            <div class="form-group row">
+                <label for="street" class="col">Street and house/apartment number:</label>
+                <input type="text" class="form-control col" name="street" id="street" th:field="*{street}" placeholder="Street and house/apartment number">
                 <div style="color: red" th:if="${#fields.hasErrors('street')}"
                      th:errors="*{street}"></div>
             </div>
-            <div class="form-group">
-                <label for="zipCode">Zip code</label>
-                <input type="text" class="form-control" name="zipCode" id="zipCode" th:field="*{zipCode}" placeholder="Zip code">
+            <div class="form-group row">
+                <label for="zipCode" class="col">Zip code:</label>
+                <input type="text" class="form-control col" name="zipCode" id="zipCode" th:field="*{zipCode}" placeholder="Zip code">
                 <div style="color: red" th:if="${#fields.hasErrors('zipCode')}"
                      th:errors="*{zipCode}"></div>
             </div>
-            <div class="form-group">
-                <label for="phoneNumber">Phone number</label>
-                <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone number">
+            <div class="form-group row">
+                <label for="phoneNumber" class="col">Phone number:</label>
+                <input type="text" class="form-control col" name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone number">
                 <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}"
                      th:errors="*{phoneNumber}"></div>
             </div>
             <p>Total price: <label th:text="${priceForAll}"></label></p><hr/>
-            <button type="submit" class="btn btn-primary">Finalize</button>
+            <button type="submit" class="btn btn-outline-warning col-12">Send</button>
         </form>
     </div>
 

@@ -30,11 +30,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-             //   .antMatchers("/").hasAnyRole("USER","ADMIN")
+
                 .antMatchers("/").permitAll()
-                .antMatchers("/gallery/*").hasAnyAuthority("ADMIN")
-                .antMatchers("/images/new").hasAnyAuthority("ADMIN")
-                .antMatchers("/images/delete/*").hasAnyAuthority("ADMIN")
+                .antMatchers("/gallery/*").hasAnyRole("ADMIN")
+                .antMatchers("/images/new").hasAnyRole("ADMIN")
+                .antMatchers("/images/delete/*").hasAnyRole("ADMIN")
                 .antMatchers("/product/edit/*").hasAnyRole("ADMIN")
                 .antMatchers("/product/save").hasAnyRole("ADMIN")
                 .antMatchers("/product/new").hasAnyRole("ADMIN")
@@ -64,15 +64,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    /*
-    @EventListener(ApplicationReadyEvent.class)
-    public void get() {
-        MyUser appUserUser = new MyUser("karol", passwordEncoder().encode("karol"),"karol", "mroziaczek00@gmail.com","ROLE_ADMIN");
-        userRepo.save(appUserUser);
-        appUserUser = new MyUser("mroz", passwordEncoder().encode("mroz"),"mroz", "mroziaczek00@gmail.com" ,"ROLE_USER");
-        userRepo.save(appUserUser);
-    }
-
-     */
 }
 

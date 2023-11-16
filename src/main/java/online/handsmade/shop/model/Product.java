@@ -39,7 +39,7 @@ public class Product {
         this.imageSource = imageSource;
     }
 
-    public Product(@NotEmpty(message = "Must no be empty") @NotBlank @Size(min = 2, message = "Min two symbols") String producer, @NotEmpty(message = "Nazwa produktu nie może być pusta") @NotBlank @Size(min = 2, message = "Zbyt krótka nazwa produktu") String name, @DecimalMax(value = "1000000.0", message = "Zbyt duża cena") @DecimalMin(value = "0.0", message = "Cena nie może być niższa niż 0zł") @NotNull(message = "Proszę podać cene") Double price, @NotEmpty(message = "Link do zdjęcia nie może być pusty") @NotBlank @Size(min = 2, message = "Zbyt krótki link do zdjęcia") String imageSource, @NotNull(message = "Proszę podać ilość dostępnych produktów") @DecimalMin(value = "0.0", message = "Ilosc nie może być niższa niż 0") Integer stock, String category) {
+    public Product(@NotEmpty(message = "Must no be empty") @NotBlank @Size(min = 2, message = "Min t") String producer, @NotEmpty(message = "Nazwa produktu nie może być pusta") @NotBlank @Size(min = 2, message = "Zbyt krótka nazwa produktu") String name, @DecimalMax(value = "1000000.0", message = "Zbyt duża cena") @DecimalMin(value = "0.0", message = "Cena nie może być niższa niż 0zł") @NotNull(message = "Proszę podać cene") Double price, @NotEmpty(message = "Link do zdjęcia nie może być pusty") @NotBlank @Size(min = 2, message = "Zbyt krótki link do zdjęcia") String imageSource, @NotNull(message = "Proszę podać ilość dostępnych produktów") @DecimalMin(value = "0.0", message = "Ilosc nie może być niższa niż 0") Integer stock, String category) {
         this.producer = producer;
         this.name = name;
         this.price = price;
