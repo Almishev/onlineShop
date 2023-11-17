@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -90,7 +91,9 @@ public class CartController {
     }
 
     @RequestMapping(value = "/cart/add/{id}",method = RequestMethod.POST)
-    public String addProducts(@ModelAttribute("cart") Cart cart, @PathVariable("id") Long product_id, Principal principal) {
+    public String addProducts(@ModelAttribute("cart") Cart cart, @PathVariable("id") Long product_id, Principal principal, RedirectAttributes redirectAttributes) {
+
+
         Long user_id = userService.findByUsername(principal.getName()).getId();
         Product product = productService.getOne(product_id);
         Cart newCart = new Cart();
@@ -98,6 +101,9 @@ public class CartController {
         newCart.setQuantity(cart.getQuantity());
         newCart.setUser_id(user_id);
         newCart.setPrice(product.getPrice()*newCart.getQuantity());
+
+         redirectAttributes.addFlashAttribute("message", "You added in basket "+product.getName()+ " "+cart.getQuantity()+" quantity"+" successfully");
+
         if (cartService.findCartByIds(user_id,product_id).isEmpty()) {
             cartService.save(newCart);
         } else {
