@@ -63,7 +63,7 @@ public class MyUser implements UserDetails {
         this.role = role;
     }
 
-    public MyUser(@NotBlank @NotEmpty(message = "Username nie może być pusty") @Size(min = 2, message = "Zbyt krótka nazwa konta") @Size(max = 30, message = "Zbyt długa nazwa konta") String username, @NotEmpty(message = "Haslo nie moze byc puste") @NotBlank String password, String passwordMatcher, @Email @NotBlank @NotEmpty(message = "Pole email nie moze byc puste") String email) {
+    public MyUser(@NotBlank @NotEmpty(message = "Username cannot be empty") @Size(min = 2, message = "Account name is too short") @Size(max = 30, message = "Account name too long") String username, @NotEmpty(message = "The password cannot be empty") @NotBlank String password, String passwordMatcher, @Email @NotBlank @NotEmpty(message = "The email field cannot be empty") String email) {
         this.username = username;
         this.password = password;
         this.passwordMatcher = passwordMatcher;

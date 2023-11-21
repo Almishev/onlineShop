@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 
+
 @Entity
 public class Product {
     @Id
@@ -25,25 +26,32 @@ public class Product {
     @NotEmpty(message = "Link must not be empty")
     @NotBlank
     @Size(min = 2,message = "min symbols-2")
-    private String imageSource;
+    private String imageSourceOne;
+
+    @NotEmpty(message = "Link must not be empty")
+    @NotBlank
+    @Size(min = 2,message = "min symbols-2")
+    private String imageSourceTwo;
+
+    @NotEmpty(message = "Link must not be empty")
+    @NotBlank
+    @Size(min = 2,message = "min symbols-2")
+    private String imageSourceThree;
     @NotNull(message = "Enter quantity")
     @DecimalMin(value="0.0", message = "Should be bigger than zero")
     private Integer stock;
     private String category;
 
-    public String getImageSource() {
-        return imageSource;
-    }
 
-    public void setImageSource(String imageSource) {
-        this.imageSource = imageSource;
-    }
 
-    public Product(@NotEmpty(message = "Must no be empty") @NotBlank @Size(min = 2, message = "Min t") String producer, @NotEmpty(message = "Nazwa produktu nie może być pusta") @NotBlank @Size(min = 2, message = "Zbyt krótka nazwa produktu") String name, @DecimalMax(value = "1000000.0", message = "Zbyt duża cena") @DecimalMin(value = "0.0", message = "Cena nie może być niższa niż 0zł") @NotNull(message = "Proszę podać cene") Double price, @NotEmpty(message = "Link do zdjęcia nie może być pusty") @NotBlank @Size(min = 2, message = "Zbyt krótki link do zdjęcia") String imageSource, @NotNull(message = "Proszę podać ilość dostępnych produktów") @DecimalMin(value = "0.0", message = "Ilosc nie może być niższa niż 0") Integer stock, String category) {
+
+    public Product(@NotEmpty(message = "Must no be empty") @NotBlank @Size(min = 2, message = "Min 2") String producer, @NotEmpty(message = "Product name cannot be empty") @NotBlank @Size(min = 2, message = "Product name is too short") String name, @DecimalMax(value = "1000000.0", message = "Price is too high") @DecimalMin(value = "0.0", message = "The price cannot be lower than 0 lv") @NotNull(message = "Please give price") Double price, @NotEmpty(message = "The link to the photo cannot be empty") @NotBlank @Size(min = 2, message = "The link to photo is too short") String imageSourceOne, @NotBlank @Size(min = 2, message = "The link to photo is too short") String imageSourceTwo, @NotBlank @Size(min = 2, message = "The link to photo is too short") String imageSourceThree, @NotNull(message = "Please enter the number of products available") @DecimalMin(value = "0.0", message = "The quantity cannot be lower than 0") Integer stock, String category) {
         this.producer = producer;
         this.name = name;
         this.price = price;
-        this.imageSource = imageSource;
+        this.imageSourceOne = imageSourceOne;
+        this.imageSourceTwo = imageSourceTwo;
+        this.imageSourceThree = imageSourceThree;
         this.stock = stock;
         this.category = category;
     }
@@ -66,6 +74,30 @@ public class Product {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public String getImageSourceOne() {
+        return imageSourceOne;
+    }
+
+    public void setImageSourceOne(String imageSourceOne) {
+        this.imageSourceOne = imageSourceOne;
+    }
+
+    public String getImageSourceTwo() {
+        return imageSourceTwo;
+    }
+
+    public void setImageSourceTwo(String imageSourceTwo) {
+        this.imageSourceTwo = imageSourceTwo;
+    }
+
+    public String getImageSourceThree() {
+        return imageSourceThree;
+    }
+
+    public void setImageSourceThree(String imageSourceThree) {
+        this.imageSourceThree = imageSourceThree;
     }
 
     public void setId(Long id) {

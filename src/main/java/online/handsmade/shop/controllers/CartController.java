@@ -129,7 +129,8 @@ public class CartController {
                 Product product = productService.getOne(i.getProduct_id());
                 allProducts.add(new CartTest(i.getId(),user_id,product.getId(),i.getQuantity(),
                         product.getName(),i.getPrice(),product.getProducer(),
-                        product.getImageSource()));
+                        product.getImageSourceOne()
+                ));
             }
         });
         model.addAttribute("cart",allProducts);
@@ -149,7 +150,7 @@ public class CartController {
                 allProducts.add(new CartTest(i.getId(),user_id,
                         productService.getOne(i.getProduct_id()).getId(),i.getQuantity(),
                         productService.getOne(i.getProduct_id()).getName(),i.getPrice(),
-                        productService.getOne(i.getProduct_id()).getProducer(), productService.getOne(i.getProduct_id()).getImageSource()));
+                        productService.getOne(i.getProduct_id()).getProducer(), productService.getOne(i.getProduct_id()).getImageSourceOne()));
             }
         });
         model.addAttribute("cart",allProducts);

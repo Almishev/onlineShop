@@ -29,8 +29,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Producer</label>
-                <input th:field="*{producer}" type="text" class="form-control" name="producer" autofocus="autofocus" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Producent">
+                <label for="exampleInputEmail1">Продукт</label>
+                <input th:field="*{producer}" type="text" class="form-control" name="producer" autofocus="autofocus" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Продукт..">
                 <div style="color: red" th:if="${#fields.hasErrors('producer')}"
                      th:errors="*{producer}"></div></td>
                 <div style="color: red" th:if="${accountExist == true}">
@@ -38,14 +38,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Name</label>
-                <input type="text" class="form-control" name="name" id="exampleInputPassword1" th:field="*{name}" placeholder="Name">
+                <label for="exampleInputPassword1">Материал</label>
+                <input type="text" class="form-control" name="name" id="exampleInputPassword1" th:field="*{name}" placeholder="Материал..">
                 <div style="color: red" th:if="${#fields.hasErrors('name')}"
                      th:errors="*{name}"></div>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword2">Price</label>
-                <input type="text" class="form-control" name="price" th:field="*{price}" id="exampleInputPassword2" placeholder="Price">
+                <label for="exampleInputPassword2">Цена</label>
+                <input type="text" class="form-control" name="price" th:field="*{price}" id="exampleInputPassword2" placeholder="Цена..">
                 <div style="color: red" th:if="${#fields.hasErrors('price')}"
                      th:errors="*{price}"></div>
             </div>
@@ -56,9 +56,8 @@
             <div class="form-group">
                 <label for="select">Category:</label>
                 <select th:field="*{category}" id="select">
-                    <option th:value="'Paints'" th:text="Paints">Paints</option>
-                    <option th:value="'Neckless'" th:text="Neckless">NeckLess</option>
-                    <option th:value="'Bracelet'" th:text="Bracelet">Bracelet</option>
+                    <option th:value="'Neckless'" th:text="Гердани">Гердани</option>
+                    <option th:value="'Bracelet'" th:text="Гривни">Гривни</option>
                 </select>
 
 

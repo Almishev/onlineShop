@@ -31,7 +31,9 @@
                     <th>
                         <a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
                         ID </a></th>
-                    <th>Photo</th>
+                    <th>PhotoOne</th>
+                    <th>PhotoTwo</th>
+                    <th>PhotoThree</th>
                     <th>  <a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
                         Producer </a></th>
                     <th>
@@ -48,7 +50,9 @@
                 <tbody>
                 <tr th:each="product : ${products}" th:onclick="'javascript:location.href=\'' + @{'/product/' + ${product.id}} + '\''">
                    <td th:text="${product.id}">ID</td>
-                    <td> <img th:src="${product.imageSource}" style="height:100px;max-width:100px;width: expression(this.width > 500 ? 500: true);"></td>
+                    <td> <img th:src="${product.imageSourceOne}" style="height:100px;max-width:100px;width: expression(this.width > 500 ? 500: true);"></td>
+                    <td> <img th:src="${product.imageSourceTwo}" style="height:100px;max-width:100px;width: expression(this.width > 500 ? 500: true);"></td>
+                    <td> <img th:src="${product.imageSourceThree}" style="height:100px;max-width:100px;width: expression(this.width > 500 ? 500: true);"></td>
                     <td th:text="${product.producer}">Producer</td>
                     <td th:text="${product.name}">Name</td>
                     <td th:text="${product.price}">Price</td>
