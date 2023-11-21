@@ -15,26 +15,40 @@
 
 <style>
 
-          body {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(76, 77, 73)), to(rgb(41, 46, 47))) fixed;
+            *{
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+        .bg-s{
+        background: rgb(244, 243, 241);
     }
 
-
+      h1, h2{
+           color: white;
+           text-shadow: 2px 2px 3px rgb(34, 34, 34);
+      }
+      p{
+       color: white;
+      }
 
             img{
               border-style: inset;
             }
 
-            .container{
-            color: white;
-            }
-
-            .widthBtn{
-            width : 210px
-            height: 40px
-            }
+        #img1{
+    width: 100%;
+    height: 40vh;
+    background-image: url("/pictures/rose.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
 
 }
+
 </style>
 <body class="d-flex flex-column h-100">
 
@@ -51,59 +65,62 @@
     <div class="container px-5 my-5">
 
         <div th:if="${param.success}" class="alert alert-success">
-            You are registered successfully!
+            Вие се регистрирахте успешно!
         </div>
 
 
 
-        <div class="text-center mb-5">
-            <h1 class="fw-bolder">Find For You And Friends</h1>
+        <div class="text-center mb-5" id="img1" >
+            <div class="mt-5">
+            <h1 class="fw-bolder">Намерете за вас и приятели</h1>
 
-            <p class="lead fw-normal  mb-0 fw-bold">Items of passionate near you</p>
-            <h2 style="color:green" th:if="${finalizeDone}==true"> You have successfully completed your order.</h2>
+            <h2 class="fw-bolder">Гривни и гердани от перли,маниста и лава на страстта близо до вас</h2>
+            <br>
+            <p>Нашите гривни и гердани са изработени от висококачествени материали и са перфектното допълнение към Вашия ежедневен или официален тоалет.
+                 Изберете от разнообразните дизайни, за да намерите точния за Вас модел.</p>
+            </div>
+            <span class="output"></span>
+            <h2 style="color:green" th:if="${finalizeDone}==true"> Вие успешно изпратихте вашата поръчка.</h2>
         </div>
         <div class="row gx-5">
             <div class="d-flex justify-content-center">
 
-                <form th:action="@{/}" class="btn btn-outline-warning">
+                <form th:action="@{/}" class="btn btn-outline-dark">
                     <input type="hidden" name="sortField" th:value="${sortField}">
                     <input type="hidden" name="sortDir" th:value="${sortDir}">
-                    <b>Filter:</b>
-                    <label for="cats">CATEGORY:</label>
-                    <select id="cats" name="keyWord" th:value="${keyWord}" onchange="this.form.submit()" class="bg-dark text-warning">
-                        <option value="" selected disabled hidden>SELECT CATEGORY</option>
-                        <option th:value="'Paints'" th:text="Paints">Paints</option>
-                        <option th:value="'Neckless'" th:text="Neckless">NeckLess</option>
-                        <option th:value="'Bracelet'" th:text="Bracelet">Bracelet</option>
+                    <select id="cats" name="keyWord" th:value="${keyWord}" onchange="this.form.submit(); getOption()" class="bg-dark text-light">
+                        <option value="" selected disabled hidden>ИЗБЕРЕТЕ КАТЕГОРИЯ</option>
+                        <option th:value="'Neckless'" th:text="Гердани">Гердани</option>
+                        <option th:value="'Bracelet'" th:text="Гривни">Гривни</option>
                     </select>
                 </form>
-                <button class="btn btn-outline-info"  onclick="clearFilter()" style="margin-left: 25px">ALL PRODUCTS</button>
+                <button class="btn btn-outline-dark"  onclick="clearFilter()" style="margin-left: 25px">ВСИЧКИ ПРОДУКТИ</button>
 
             </div>
             <div sec:authorize="!isAuthenticated()" th:each="product :${products}" class="col-lg-6 mb-4 mt-4">
-                <div class="position-relative mb-3 p-4 text-center">
+                <div class="position-relative mb-3 p-4 text-center bg-s">
                     <div class="">
-                    <img role="button" th:onclick="begin()" class="img-fluid rounded-3 mb-3" style="width: 500px; height: 370px" th:src="${product.imageSource}" alt="..."/>
+                    <img role="button" th:onclick="begin()" class="img-fluid rounded-3 mb-3" style="width: 400px; height: 330px" th:src="${product.imageSource}" alt="..."/>
                     </div>
                     <span sec:authorize="hasRole('ADMIN')">
                         <label>ID:</label>
-                        <span th:text="${product.id}" class="fw-bold text-warning">ID</span>
+                        <span th:text="${product.id}" class="fw-bold">ID</span>
                     </span>
                     <span>
-                    <label>Name:</label>
-                    <span th:text="${product.name}" class="fw-bold text-warning">Name</span>
+                    <label>Продукт:</label>
+                    <span th:text="${product.name}" class="fw-bold">Продукт</span>
                     </span>
                     <span>
-                    <label>Producer:</label>
-                    <span th:text="${product.producer}" class="fw-bold text-warning">Producer</span>
+                    <label>Материал:</label>
+                    <span th:text="${product.producer}" class="fw-bold">Материал</span>
                     </span>
                     <span>
-                    <label>Price:</label>
-                    <span th:text="${product.price}" class="fw-bold text-warning">Producer</span><span>Lv.</span>
+                    <label>Цена:</label>
+                    <span th:text="${product.price}" class="fw-bold">Цена</span><span>лв.</span>
                     </span>
                     <span sec:authorize="hasRole('ADMIN')" class="text-center">
-                        <label>Quantity:</label>
-                        <span th:text="${product.stock}" class="fw-bold text-warning">Quantity</span>
+                        <label>Количество:</label>
+                        <span th:text="${product.stock}" class="fw-bold">Количество</span>
                     </span>
 
                 </div>
@@ -111,30 +128,30 @@
 
         </div>
             <div sec:authorize="isAuthenticated()" th:each="product :${products}" class="col-lg-6 mb-4 mt-4">
-                <div class="position-relative mb-3 text-center">
+                <div class="position-relative mb-3 text-center p-4 bg-s">
                     <div class="">
 
                             <img th:onclick="'javascript:location.href=\'' + @{'/product/' + ${product.id}} + '\''"  role="button" class="img-fluid rounded-3 mb-3" style="width: 400px; height: 330px" th:src="${product.imageSource}" alt="..."/>
                     </div>
                     <span sec:authorize="hasRole('ADMIN')">
                         <label>ID:</label>
-                        <span th:text="${product.id}" class="fw-bold text-warning">ID</span>
+                        <span th:text="${product.id}" class="fw-bold">ID</span>
                     </span>
                     <span>
-                        <label>Name:</label>
-                        <span th:text="${product.name}" class="fw-bold text-warning">Name</span>
+                        <label>Продукт:</label>
+                        <span th:text="${product.name}" class="fw-bold">Продукт</span>
                     </span>
                     <span>
-                        <label>Producer:</label>
-                        <span th:text="${product.producer}" class="fw-bold text-warning">Producer</span>
+                        <label>Материал:</label>
+                        <span th:text="${product.producer}" class="fw-bold">Материал</span>
                     </span>
                     <span>
-                        <label>Price:</label>
-                        <span th:text="${product.price}" class="fw-bold text-warning">Price</span><span>Lv.</span>
+                        <label>Цена:</label>
+                        <span th:text="${product.price}" class="fw-bold">Цена</span><span>лв.</span>
                     </span>
                     <div sec:authorize="hasRole('ADMIN')">
-                        <label>Quantity:</label>
-                        <span th:text="${product.stock}" class="fw-bold text-warning">Quantity</span>
+                        <label>Количество:</label>
+                        <span th:text="${product.stock}" class="fw-bold">Количество</span>
                     </div>
 
                 </div>
@@ -144,7 +161,7 @@
             <div class="mb-3" th:if = "${totalPages>1}">
                 <div class="row justify-content-center">
                     <div class="col-2 text-primary">
-                        Total rows: [[ ${totalItems}]]    -
+                        Общо: [[ ${totalItems}]]    -
 
                         <span th:each="i: ${#numbers.sequence(1, totalPages)}">
                       <a th:if="${currentPage != i}" th:href="@{'/products/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}+ ${keyWord!=null ? '&keyWord=' + keyWord : ''}}">[[${i}]]</a>
@@ -183,6 +200,12 @@
 
     // Set a timeout to call the removeElement function after 5 seconds (5000 milliseconds)
     setTimeout(removeElement, 5000);
+
+    function getOption() {
+		selectElement = document.querySelector('#cats');
+		output = selectElement.value;
+		document.querySelector('.output').textContent = output;
+	}
   </script>
 </body>
 

@@ -12,13 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style>
+ *{
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
 
-      body {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(76, 77, 73)), to(rgb(41, 46, 47))) fixed;
-    }
-    .container{
-            color: white;
-     }
+  h2{
+   text-shadow: 2px 2px 3px rgb(34, 34, 34);
+  }
 
 </style>
 <body>
@@ -27,47 +30,47 @@
 
 </nav>
     <div class="container">
-        <h2 class="text-center">Sending the order</h2>
+        <h2 class="text-center">Изпращане на поръчка</h2>
         <form action="#" th:action="@{/cart/finalize/save}" th:object="${addressandpersonaldata}" method="post">
 
-            <div class="form-group row">
-                <label for="exampleInputEmail1" class="col">Name:</label>
-                <input th:field="*{firstName}" type="text" class="form-control col" name="username" autofocus="autofocus" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name">
+            <div class="form-group row p-3">
+                <label for="exampleInputEmail1" class="col-12 col-md-6 col-lg-6">Име:</label>
+                <input th:field="*{firstName}" type="text" class="form-control col-12 col-md-6 col-lg-6" name="username" autofocus="autofocus" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Име..">
                 <div style="color: red" th:if="${#fields.hasErrors('firstName')}"
                      th:errors="*{firstName}"></div></td>
             </div>
-            <div class="form-group row">
-                <label class="col" for="lastName">Last name:</label>
-                <input type="text" class="form-control col" name="lastName" id="lastName" th:field="*{lastName}" placeholder="Last name">
+            <div class="form-group row p-3">
+                <label class="col-12 col-md-6 col-lg-6" for="lastName">Фамилия:</label>
+                <input type="text" class="form-control col-12 col-md-6 col-lg-6" name="lastName" id="lastName" th:field="*{lastName}" placeholder="Фамилия..">
                 <div style="color: red" th:if="${#fields.hasErrors('lastName')}"
                      th:errors="*{lastName}"></div>
             </div>
-            <div class="form-group row">
-                <label for="city" class="col">City:</label>
-                <input type="text" class="form-control col" name="lastName" id="city" th:field="*{city}" placeholder="City">
+            <div class="form-group row p-3">
+                <label for="city" class="col-12 col-md-6 col-lg-6">Град:</label>
+                <input type="text" class="form-control col-12 col-md-6 col-lg-6" name="lastName" id="city" th:field="*{city}" placeholder="Град..">
                 <div style="color: red" th:if="${#fields.hasErrors('city')}"
                      th:errors="*{city}"></div>
             </div>
-            <div class="form-group row">
-                <label for="street" class="col">Street and house/apartment number:</label>
-                <input type="text" class="form-control col" name="street" id="street" th:field="*{street}" placeholder="Street and house/apartment number">
+            <div class="form-group row p-3">
+                <label for="street" class="col-12 col-md-6 col-lg-6">Улица&Номер:</label>
+                <input type="text" class="form-control col-12 col-md-6 col-lg-6" name="street" id="street" th:field="*{street}" placeholder="Улица/номер..">
                 <div style="color: red" th:if="${#fields.hasErrors('street')}"
                      th:errors="*{street}"></div>
             </div>
-            <div class="form-group row">
-                <label for="zipCode" class="col">Zip code:</label>
-                <input type="text" class="form-control col" name="zipCode" id="zipCode" th:field="*{zipCode}" placeholder="Zip code">
+            <div class="form-group row p-3">
+                <label for="zipCode" class="col">Пощенски код:</label>
+                <input type="text" class="form-control col" name="zipCode" id="zipCode" th:field="*{zipCode}" placeholder="Пощенски код..">
                 <div style="color: red" th:if="${#fields.hasErrors('zipCode')}"
                      th:errors="*{zipCode}"></div>
             </div>
-            <div class="form-group row">
-                <label for="phoneNumber" class="col">Phone number:</label>
-                <input type="text" class="form-control col" name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone number">
+            <div class="form-group row p-3">
+                <label for="phoneNumber" class="col-12 col-md-6 col-lg-6">Тел. номер:</label>
+                <input type="text" class="form-control col-12 col-md-6 col-lg-6" name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Тел. номер..">
                 <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}"
                      th:errors="*{phoneNumber}"></div>
             </div>
-            <p>Total price: <label th:text="${priceForAll}"></label></p><hr/>
-            <button type="submit" class="btn btn-outline-warning col-12">Send</button>
+            <p><b>Обща сума: <label th:text="${priceForAll}"></label> лв</b></p><hr/>
+            <button type="submit" class="btn btn-outline-success col-12">Изпращане</button>
         </form>
     </div>
 

@@ -6,39 +6,57 @@
     <title>Login page</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/animation.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <style>
-     body {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(76, 77, 73)), to(rgb(41, 46, 47))) fixed;
-    }
-    .container{
-            color: white;
-     }
-</style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+  h2{
+   text-shadow: 2px 2px 3px rgb(34, 34, 34);
+  }
+  </style>
 <body>
-
+<div class="hero">
 <nav th:replace="fragments/nav">
 
 </nav>
 <div class="container mt-4">
-    <h2 class="text-center">Login here to make order</h2>
+    <h2 class="text-center mb-4">Вписване за поръчка</h2>
+
+    <div class="boobles">
+        <img src="pictures/perli33.png" alt="">
+        <img src="pictures/perli33.png" alt="">
+        <img src="pictures/perli33.png" alt="">
+        <img src="pictures/perli33.png" alt="">
+        <img src="pictures/perli33.png" alt="">
+        <img src="pictures/perli33.png" alt="">
+        <img src="pictures/perli33.png" alt="">
+    </div>
 <form th:action="@{/login.html}" method="post">
-    <p th:if="${loginError}" style="color: red" class="error">Wrong user or password</p>
-    <p th:if="${success == true}" style="color: green" >You have successfully registered! You can log in now!</p>
-    <div class="form-group">
-        <label for="usern">Username</label>
-        <input id="usern" type="text" class="form-control" name="username" autofocus="autofocus"  aria-describedby="emailHelp" placeholder="Enter username">
+    <p th:if="${loginError}" style="color: red" class="error">Грешен потребител, или парола</p>
+    <p th:if="${success == true}" style="color: green" >Вие се регистрирахте успешно! Можете вече да се впишете!</p>
+    <div class="form-group row">
+        <label class="col-12 col-md-6 col-lg-4" for="usern">Потребителско име</label>
+        <input id="usern" type="text" class="form-control col-12 col-md-6 col-lg-6" name="username" autofocus="autofocus"  aria-describedby="emailHelp" placeholder="Потребителско име..">
     </div>
-    <div class="form-group">
-        <label for="passwordn">Password</label>
-        <input id="passwordn" type="password" class="form-control" name="password"  placeholder="Password">
+    <div class="form-group row">
+        <label class="col-12 col-md-6 col-lg-4" for="passwordn">Парола</label>
+        <input id="passwordn" type="password" class="form-control col-12 col-md-6 col-lg-6" name="password"  placeholder="Парола..">
     </div>
-    <button id="subm" type="submit" class="btn btn-outline-info">Log in here</button> <span>If you don't have registration, register -></span>
-    <button type="button"  onclick="location.href='/user/new'" class="btn btn-outline-success">Registration</button> <span>or order like a guest -> </span>
+    <button id="subm" type="submit" class="btn btn-outline-dark">Вписване</button> <span>Нямате регистрация?, <span onclick="location.href='/user/new'" class="text-primary" style="cursor: pointer;">регистриране </span></span>
+
+    <!--
+    <span>or order like a guest -> </span>
     <span onclick="guest()"  id="guest"  class="btn btn-outline-danger">Order guest</span>
+    -->
 </form>
 </div>
 
@@ -46,6 +64,7 @@
 <footer th:replace="fragments/footer">
 
 </footer>
+</div>
 <script>
   function guest(){
 

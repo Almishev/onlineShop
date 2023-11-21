@@ -16,9 +16,7 @@
 </head>
 
 <style>
-     body {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(76, 77, 73)), to(rgb(41, 46, 47))) fixed;
-    }
+
 
     *{
     margin: 0;
@@ -31,10 +29,7 @@
 
 
 
-    .container{
-            color: white;
-     }
-       @media only screen and (max-width:800px) {
+    @media only screen and (max-width:800px) {
             #no-more-tables tbody,
             #no-more-tables tr,
             #no-more-tables td {
@@ -74,39 +69,39 @@
             <table class="table table-hover" id="no-more-tables">
                 <thead>
                 <tr class="bg-warning">
-                    <th data-title="Producer">Producer</th>
-                    <th data-title="Name">Name</th>
-                    <th data-title="Price">Price</th>
-                    <th data-title="Quantity">Quantity</th>
-                    <th>Delete</th>
+                    <th data-title="Producer">Продукт</th>
+                    <th data-title="Name">Материал</th>
+                    <th data-title="Price">Цена</th>
+                    <th data-title="Quantity">Количество</th>
+                    <th>Изтриване</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="cart : ${cart}">
 
-                    <td data-title="Producer" th:text="${cart.producer}">Producer</td>
-                    <td data-title="Name" th:text="${cart.name}">Name</td>
-                    <td data-title="Price" class="price" th:text="${cart.price}">Price</td>
-                    <td data-title="Quantity" th:text="${cart.quantity}">Quantity </td>
+                    <td data-title="Producer" th:text="${cart.producer}">Продукт</td>
+                    <td data-title="Name" th:text="${cart.name}">Материал</td>
+                    <td data-title="Price" class="price" th:text="${cart.price}">Цена</td>
+                    <td data-title="Quantity" th:text="${cart.quantity}">Количество</td>
                     <td>
                         <div class="buttons">
-                        <button class="btn btn-outline-danger">   <a data-toggle="modal" data-target="#exampleModal" onclick="showToast(successMessage)">Delete</a> </button>
+                        <button class="btn btn-outline-danger">   <a data-toggle="modal" data-target="#exampleModal" onclick="showToast(successMessage)">Премахни</a> </button>
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Триене от кошницата</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are you sure to delete?
+                                        Сигурни ли сте?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <a th:href="@{'/cart/delete/' + ${cart.id}}" class="btn btn-primary">Yes, delete</a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Изход</button>
+                                        <a th:href="@{'/cart/delete/' + ${cart.id}}" class="btn btn-primary">Да, премахване</a>
                                     </div>
                                 </div>
                             </div>
@@ -118,14 +113,14 @@
                </table>
             </div>
             <hr/>
-            <button th:if="${not #lists.isEmpty(cart)}" type="submit" th:onclick="location.href='/cart/finalize'" class="btn btn-outline-dark">Sending order</button>
+            <button th:if="${not #lists.isEmpty(cart)}" type="submit" th:onclick="location.href='/cart/finalize'" class="btn btn-outline-dark">Поръчай</button>
         </div>
 
     </div>
 
 </div>
 <br/>
-<div class="bg-info border border-white rounded text-white fs-5 text-center" id="total" style="width: 190px; "></div>
+<div class="bg-warning border  rounded  fs-5 text-center" id="total" style="width: 190px; "></div>
 
 
 <div id="toast-box">
@@ -172,9 +167,7 @@
       }
         document.getElementById('total').innerHTML= sum;
 
-         document.getElementById("total").innerHTML = `Your bill is:  ${(sum)} lv.`;
-
-
+         document.getElementById("total").innerHTML = `Вашата сметка е: ${(sum)} лв.`;
 
 
         </script>

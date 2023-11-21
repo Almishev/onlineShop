@@ -13,19 +13,8 @@
 </head>
 <style>
 
-            body {
-                   background: -webkit-gradient(linear, left top, left bottom, from(rgb(76, 77, 73)), to(rgb(41, 46, 47))) fixed;
-                  }
-
-
-
-
             img{
               border-style: inset;
-            }
-
-            .container{
-            color: white;
             }
 
 
@@ -43,18 +32,18 @@
         <div class="row">
             <div class="col-sm-4"><img th:src="*{product.imageSource}" style="height:450px;max-width:550px;width: expression(this.width > 500 ? 500: true);"></div>
             <div class="col-sm-8">
-                Producer:<h3 th:text="*{product.producer}"></h3>
-                Name: <h3 th:text="*{product.name}"></h3>
-                Number of products available:<h3 id="num" th:text="*{product.stock}"></h3>
+                Продукт:<h3 th:text="*{product.producer}"></h3>
+                Материал: <h3 th:text="*{product.name}"></h3>
+                Остават още:<h3 id="num" th:text="*{product.stock}"></h3>
 
                 <form action="#" th:action="@{'/cart/add/' + ${product.id}}" th:object="${cart}"
                       method="post">
-                    <label>Enter quantity:</label>
+                    <label>Колко броя желаете:</label>
 
                 <input id="numSelect" type="number" min="1" th:max="${product.stock}" th:field="*{quantity}" />
-                <button type="submit" onclick="myAlert()" class="btn btn-outline-primary">add to cart</button>
+                <button type="submit" onclick="myAlert()" class="btn btn-outline-success">Добави в кошница</button>
 
-                <span th:if="${param.error != null}" >There are not so many products</span>
+                <span th:if="${param.error != null}" >Нямаме толкова продукти</span>
         </form>
             </div>
         </div>
@@ -79,7 +68,7 @@
   var nSelect = parseInt(textSelect);
   function myAlert() {
   if(nSelect>0){
-  alert("You successful added product in your basket.");
+  alert("Вие успешно добавихте продукт в кошницата.");
   }
 }
 

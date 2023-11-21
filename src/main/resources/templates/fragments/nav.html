@@ -1,54 +1,64 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info mb-4"  xmlns:th="http://www.w3.org/1999/xhtml"
+
+
+<style>
+
+	.nav-item .nav-link:hover{
+        color: yellow !important
+	}
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark mb-4"  xmlns:th="http://www.w3.org/1999/xhtml"
 
      style="border-bottom: 3px solid black; top: 3px;" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container-fluid">
-        <a class="navbar-brand nav-link" th:href="@{/}" style="margin-left: 40px;">Store <span class="fw-bold"> HOME </span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand nav-link text-white"  th:href="@{/}" style="margin-left: 40px;"> <b><i>Магазин "РПК"</i></b></a>
+        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll" style="margin-left: 250px">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px; font-size:18px; font-weight: bold;">
-                <li  class="nav-item" th:class="${activePage == 'home'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'"  style="margin-left: 10px">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px; font-size:18px;">
+                <li  class="nav-item" th:class="${activePage == 'home'} ? 'nav-item active  border-bottom border-light' : 'nav-item'"  style="margin-left: 10px">
 
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link text-white" href="/">Начало</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item" th:class="${activePage == 'cart'} ? 'nav-item active border-bottom border-dark' : 'nav-item'"  style="margin-left: 10px">
+                <li sec:authorize="isAuthenticated()" class="nav-item" th:class="${activePage == 'cart'} ? 'nav-item active border-bottom border-light' : 'nav-item'"  style="margin-left: 10px">
 
-                    <a id="basket" class="nav-link" href="/cart">Basket</a>
-                </li>
-
-                <li sec:authorize="hasRole('ADMIN')" class="nav-item"  th:class="${activePage == 'adminPanel'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
-                    <a class="nav-link" href="/panel">Admin panel</a>
+                    <a id="basket" class="nav-link text-white" href="/cart">Кошница</a>
                 </li>
 
-                <li sec:authorize="hasRole('ADMIN')"  class="nav-item"  th:class="${activePage == 'newProduct'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
-                <a class="nav-link" th:href="@{/product/new}">Add a new product</a>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item"  th:class="${activePage == 'adminPanel'} ? 'nav-item active  border-bottom border-light' : 'nav-item'">
+                    <a class="nav-link text-white" href="/panel">Админ</a>
                 </li>
 
-                <li sec:authorize="hasRole('ADMIN')" class="nav-item"  th:class="${activePage == 'viewOrders'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
-                <a class="nav-link"  th:href="@{/panel/orders}">View orders</a>
+                <li sec:authorize="hasRole('ADMIN')"  class="nav-item"  th:class="${activePage == 'newProduct'} ? 'nav-item active  border-bottom border-light' : 'nav-item'">
+                <a class="nav-link text-white" th:href="@{/product/new}">Добави</a>
                 </li>
 
-                <li sec:authorize="isAuthenticated()" class="nav-item"  th:class="${activePage == 'logOut'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
-                    <a class="nav-link" href="/logout">log out</a>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item"  th:class="${activePage == 'viewOrders'} ? 'nav-item active  border-bottom border-light' : 'nav-item'">
+                <a class="nav-link text-white"  th:href="@{/panel/orders}">Поръчки</a>
                 </li>
-                <li sec:authorize="!isAuthenticated()" class="nav-item"  th:class="${activePage == 'logIn'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
-                    <a class="nav-link" href="/login.html">log in</a>
+
+                <li sec:authorize="isAuthenticated()" class="nav-item"  th:class="${activePage == 'logOut'} ? 'nav-item active  border-bottom border-light' : 'nav-item'">
+                    <a class="nav-link text-white" href="/logout">Отписване</a>
                 </li>
-                <li sec:authorize="!isAuthenticated()" class="nav-item"  th:class="${activePage == 'register'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
-                    <a class="nav-link" href="/user/new">Register</a>
+                <li sec:authorize="!isAuthenticated()" class="nav-item"  th:class="${activePage == 'logIn'} ? 'nav-item active  border-bottom border-light' : 'nav-item'">
+                    <a class="nav-link text-white" href="/login.html">Вход</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item"  th:class="${activePage == 'register'} ? 'nav-item active  border-bottom border-light' : 'nav-item'">
+                    <a class="nav-link text-white" href="/user/new">Регистрация</a>
                 </li>
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item">
-                    <a class="nav-link"  th:href="@{/gallery}">Gallery</a>
+                    <a class="nav-link text-white"  th:href="@{/gallery}">Галерия</a>
                 </li>
 
-                <li class="nav-item" th:class="${activePage == 'about'} ? 'nav-item active  border-bottom border-dark' : 'nav-item'">
-                    <a class="nav-link" th:href="@{/about}">About us</a>
+                <li class="nav-item" th:class="${activePage == 'about'} ? 'nav-item active  border-bottom border-light' : 'nav-item'">
+                    <a class="nav-link text-white" th:href="@{/about}">За нас</a>
                 </li>
 
 
                 <li sec:authorize="isAuthenticated()" class="nav-item" style="margin-left: 100px">
-                    <a class="nav-link">Welcome  <span sec:authentication="name"></span> </a>
+                    <a class="nav-link text-white">Здравейте  <span sec:authentication="name"></span> </a>
                 </li>
 
 

@@ -102,7 +102,7 @@ public class CartController {
         newCart.setUser_id(user_id);
         newCart.setPrice(product.getPrice()*newCart.getQuantity());
 
-         redirectAttributes.addFlashAttribute("message", "You added in basket "+product.getName()+ " "+cart.getQuantity()+" quantity"+" successfully");
+         redirectAttributes.addFlashAttribute("message", "Вие успешно добавихте "+product.getName()+ " "+cart.getQuantity()+" бр.");
 
         if (cartService.findCartByIds(user_id,product_id).isEmpty()) {
             cartService.save(newCart);
