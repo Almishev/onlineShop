@@ -62,19 +62,33 @@
 
 
             </div>
+
             <div class="form-group">
-                <label for="imageSource">Imagine link</label>
-                <input type="text" class="form-control" name="imageSource" id="imageSource" th:field="*{imageSource}" placeholder="Link do obrazka">
-                <div style="color: red" th:if="${#fields.hasErrors('imageSource')}"
-                     th:errors="*{imageSource}"></div>
+                <label for="imageSourceOne">Линк към снимка eдно</label>
+                <input type="text" class="form-control" name="imageSourceOne" id="imageSourceOne" th:field="*{imageSourceOne}" placeholder="Линк към снимката">
+                <div style="color: red" th:if="${#fields.hasErrors('imageSourceOne')}"
+                     th:errors="*{imageSourceOne}"></div>
             </div>
             <div class="form-group">
-                <label for="stock">Number of products available</label>
-                <input type="text" class="form-control" name="imageSource" id="stock" th:field="*{stock}" placeholder="Number of products available">
+                <label for="imageSourceTwo">Линк към снимка две</label>
+                <input type="text" class="form-control" name="imageSourceOne" id="imageSourceTwo" th:field="*{imageSourceTwo}" placeholder="Линк към снимката">
+                <div style="color: red" th:if="${#fields.hasErrors('imageSourceTwo')}"
+                     th:errors="*{imageSourceOne}"></div>
+            </div>
+            <div class="form-group">
+                <label for="imageSourceThree">Линк към снимка три</label>
+                <input type="text" class="form-control" name="imageSourceThree" id="imageSourceThree" th:field="*{imageSourceThree}" placeholder="Линк към снимката">
+                <div style="color: red" th:if="${#fields.hasErrors('imageSourceThree')}"
+                     th:errors="*{imageSourceOne}"></div>
+            </div>
+            <div class="form-group">
+                <label for="stock">Наличност?</label>
+                <input type="text" class="form-control" name="stock" id="stock" th:field="*{stock}" placeholder="Наличност..">
                 <div style="color: red" th:if="${#fields.hasErrors('stock')}"
                      th:errors="*{stock}"></div>
             </div>
-            <button type="submit" class="btn btn-primary">Edit</button>
+
+            <button type="submit" class="btn btn-primary">Приложи</button>
         </form>
     </div>
 

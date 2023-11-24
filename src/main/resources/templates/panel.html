@@ -12,6 +12,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
 </head>
 <body>
 <nav th:replace="fragments/nav">
@@ -58,11 +60,11 @@
                     <td th:text="${product.price}">Price</td>
                     <td th:text="${product.stock}">Quantity available</td>
                     <td>
-                        <a th:href="@{'/product/edit/' + ${product.id}}">Edit</a>
+                        <a class="fas fa-edit fa-2x icon-green" href="" th:href="@{'/product/edit/' + ${product.id}}"></a>
                         &nbsp;&nbsp;&nbsp;
-                        <a th:href="@{'/product/delete/' + ${product.id}}">Delete</a>
+                        <a class="fas fa-trash fa-2x icon-dark" th:href="@{'/product/delete/' + ${product.id}}"></a>
                         &nbsp;&nbsp;&nbsp;
-                        <a th:href="@{'/product/' + ${product.id}}">Look</a>
+                        <a class="fas fa-check-circle fa-2x icon-dark" th:href="@{'/product/' + ${product.id}}"></a>
                     </td>
                 </tr>
                 </tbody>
