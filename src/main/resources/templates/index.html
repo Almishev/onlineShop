@@ -101,7 +101,7 @@
                 <div class="position-relative mb-3 p-4 text-center bg-s">
 
                     <div class="">
-                    <img role="button" th:onclick="begin()" class="img-fluid rounded-3 mb-3" style="width: 400px; height: 330px" th:src="${product.imageSourceOne}" alt="..."/>
+                    <img role="button" title="buy" th:onclick="begin()" class="img-fluid rounded-3 mb-3" style="width: 400px; height: 330px" th:src="${product.imageSourceOne}" alt="..."/>
                     </div>
 
                     <span sec:authorize="hasRole('ADMIN')">
@@ -133,7 +133,7 @@
                 <div class="position-relative mb-3 text-center p-4 bg-s">
                     <div class="">
 
-                            <img th:onclick="'javascript:location.href=\'' + @{'/product/' + ${product.id}} + '\''"  role="button" class="img-fluid rounded-3 mb-3" style="width: 400px; height: 330px" th:src="${product.imageSourceOne}" alt="..."/>
+                            <img title="buy" th:onclick="'javascript:location.href=\'' + @{'/product/' + ${product.id}} + '\''"  role="button" class="img-fluid rounded-3 mb-3" style="width: 400px; height: 330px" th:src="${product.imageSourceOne}" alt="..."/>
                     </div>
                     <span sec:authorize="hasRole('ADMIN')">
                         <label>ID:</label>
